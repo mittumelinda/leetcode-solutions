@@ -1,0 +1,19 @@
+class Solution {
+    public boolean areNumbersAscending(String s) {
+        String[] words=s.split(" ");
+        List<Integer> numList =new ArrayList<>();
+        for(String word:words){
+            if(word.matches("\\d+")){
+                 numList.add(Integer.parseInt(word));
+            }
+           
+        }
+        int[] num=numList.stream().mapToInt(i->i).toArray();
+        for(int i=1;i<num.length-1;i++){
+            if(num[i] >= num[i+1]){
+                return false;
+            }
+        }
+         return true;
+    }
+}
